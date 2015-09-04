@@ -17,6 +17,10 @@ TODO need to publish to the repo...
 $ cf add-plugin-repo CF-Community http://plugins.cloudfoundry.org/
 $ cf install-plugin 'buildpack-management' -r CF-Community
 ```
+#### Install from binary
+
+- Download the appropriate plugin binary from [releases](https://github.com/davidehringer/cf-buildpack-management-plugin/releases)
+- Install the plugin: `$ cf install-plugin <binary>`
 
 ## Install From Source
 
