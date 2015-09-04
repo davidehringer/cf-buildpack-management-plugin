@@ -22,8 +22,11 @@ var _ = Describe("BuildpackManifestRepo", func() {
 
 			Expect(len(buildpacks)).To(Equal(3))
 
+			Expect(buildpacks[1].Name).To(Equal("ruby_buildpack"))
+			Expect(buildpacks[1].Position).To(Equal(2))
+			Expect(buildpacks[1].Enabled).To(Equal(true))
+			Expect(buildpacks[1].Locked).To(Equal(false))
 			Expect(buildpacks[1].Filename).To(Equal("../fixtures/buildpacks/example-2.zip"))
-			// TODO additional assertions
 		})
 
 		// TODO test invalid file or directory

@@ -45,6 +45,6 @@ func (cmd CliUpdateBuildpackCommand) Execute() {
 	fmt.Println("Executing: cf ", args)
 	_, err := cmd.cliConnection.CliCommand(args...)
 	if err != nil {
-		fmt.Println("error: ", err)
+		fmt.Println("Unable to update buildpack: ", err)
 	}
 }

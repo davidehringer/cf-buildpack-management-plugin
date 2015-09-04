@@ -35,6 +35,6 @@ func (cmd CliRenameBuildpackCommand) Execute() {
 	fmt.Println("Executing: cf ", args)
 	_, err := cmd.cliConnection.CliCommand(args...)
 	if err != nil {
-		fmt.Println("error: ", err)
+		fmt.Println("Unable to rename buildpack: ", err)
 	}
 }
