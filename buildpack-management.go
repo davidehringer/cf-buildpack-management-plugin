@@ -87,18 +87,3 @@ func dryRun(args []string) (dryRun bool) {
 	}
 	return 
 }
-
-type Result struct {
-	Resources []Resource
-}
-
-type Resource struct {
-	Entity *Buildpack
-}
-
-type Buildpack struct {
-	Name     string
-	Position int
-	Enabled  bool
-	Filename string
-}
