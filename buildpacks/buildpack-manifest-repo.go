@@ -1,13 +1,13 @@
 package buildpacks
 
 import (
-	"fmt"
-	"os"
 	"errors"
+	"fmt"
+	"gopkg.in/yaml.v2"
 	"io"
 	"io/ioutil"
+	"os"
 	"path/filepath"
-	"gopkg.in/yaml.v2"
 )
 
 type BuildpackManifestRepo interface {
@@ -60,7 +60,7 @@ func validateFiles(manifest buildpackManifest) error {
 	var invalid bool
 	for _, buildpack := range manifest.Buildpacks {
 		_, err := os.Stat(buildpack.Filename)
-		if(err != nil){
+		if err != nil {
 			invalid = true
 			dir, err := filepath.Abs(buildpack.Filename)
 			if err != nil {
@@ -69,7 +69,7 @@ func validateFiles(manifest buildpackManifest) error {
 			fmt.Printf("Invalid filename '%v' for buildpack '%v'. File does not exist.\n", dir, buildpack.Name)
 		}
 	}
-	if(invalid){
+	if invalid {
 		return errors.New("Invalid files referenced in configuration")
 	}
 	return nil

@@ -53,7 +53,7 @@ func (service CliBuildpackService) ConfigureBuildpacks(desiredState []Buildpack,
 		fmt.Printf("\t- %v buildpack named %v\n", command.Action(), command.BuildpackName())
 	}
 
-	if(dryRun) {
+	if dryRun {
 		fmt.Println("Dry run mode. No actions will be executed.")
 		return nil
 	} else {

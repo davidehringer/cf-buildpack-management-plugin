@@ -20,10 +20,10 @@ var _ = Describe("AddBuildpackCommand", func() {
 	It("it calls the add-buildpack comand", func() {
 
 		buildpack := Buildpack{
-			Name: "example-bp",
+			Name:     "example-bp",
 			Position: 2,
-			Enabled: true,
-			Locked: false,
+			Enabled:  true,
+			Locked:   false,
 			Filename: "example.zip",
 		}
 		command := NewCliAddBuildpackCommand(cliConnection, buildpack)
