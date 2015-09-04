@@ -60,7 +60,7 @@ func main() {
 func (c *BuildpackManager) Run(cliConnection plugin.CliConnection, args []string) {
 	if args[0] == "configure-buildpacks" {
 		if len(args) < 2 {
-			// TODO this is useless validation. Make useful
+			// TODO this is not so great validation. Make useful
 			fmt.Println("Incorrect Usage. \n\nPATH_TO_YAML_CONFIG_FILE is a required argument")
 			os.Exit(1)
 		}
@@ -70,7 +70,7 @@ func (c *BuildpackManager) Run(cliConnection plugin.CliConnection, args []string
 
 		config, err := manifestRepo.ReadManifest(args[1])
 		if(err != nil){
-			fmt.Println("error: ", err)
+			fmt.Printf("Invalid manifest file '%v': %v", args[1], err)
 			os.Exit(1)
 		}
 
