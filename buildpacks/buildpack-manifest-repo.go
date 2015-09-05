@@ -62,11 +62,11 @@ func parseManifest(file io.Reader) (buildpacks []Buildpack, err error) {
 		}
 
 		buildpacks = append(buildpacks, Buildpack{
-			Name: buildpack.(map[interface{}]interface{})["name"].(string),
+			Name:     buildpack.(map[interface{}]interface{})["name"].(string),
 			Position: buildpack.(map[interface{}]interface{})["position"].(int),
 			Filename: buildpack.(map[interface{}]interface{})["filename"].(string),
-			Enabled: enabled,
-			Locked: locked,
+			Enabled:  enabled,
+			Locked:   locked,
 		})
 	}
 

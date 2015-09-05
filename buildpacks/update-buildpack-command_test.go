@@ -17,7 +17,7 @@ var _ = Describe("UPdateBuildpackCommand", func() {
 		cliConnection = &fakes.FakeCliConnection{}
 	})
 
-	var _ = Describe("it calls the update-buildpack comand", func() {	
+	var _ = Describe("it calls the update-buildpack comand", func() {
 		It("to enable and unlock a buildpack", func() {
 
 			buildpack := Buildpack{
@@ -52,5 +52,5 @@ var _ = Describe("UPdateBuildpackCommand", func() {
 			args := cliConnection.CliCommandArgsForCall(0)
 			Expect(args).To(Equal([]string{"update-buildpack", buildpack.Name, "-i", "3", "--disable", "--lock"}))
 		})
-	})	
+	})
 })
