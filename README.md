@@ -11,8 +11,6 @@ determines what buildpacks must be added, deleted, or updated.
 
 ## Install from CLI
 
-TODO need to publish to the repo...
-
 ```
 $ cf add-plugin-repo CF-Community http://plugins.cloudfoundry.org/
 $ cf install-plugin 'buildpack-management' -r CF-Community

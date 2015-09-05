@@ -5,7 +5,7 @@ export GH_REPO=${GH_REPO:-cf-buildpack-management-plugin}
 export DESCRIPTION=${DESCRIPTION:-"Beta release"}
 export PKG_DIR=${PKG_DIR:=out}
 
-VERSION=0.9.0
+VERSION=1.0.0
 
 if [[ "$(which github-release)X" == "X" ]]; then
   echo "Please install github-release. Read https://github.com/aktau/github-release#readme"
