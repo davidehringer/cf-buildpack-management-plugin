@@ -29,6 +29,13 @@ var _ = Describe("BuildpackManifestRepo", func() {
 			Expect(buildpacks[1].Filename).To(Equal("../fixtures/buildpacks/example-2.zip"))
 		})
 
-		// TODO test invalid file or directory
+		It("returns an error if the file doens't exist", func() {
+
+			buildpacks, err := repo.ReadManifest("../fixtures/buildpacks/does-not-exist.yml")
+
+			Expect(err).To(HaveOccurred())
+			Expect(buildpacks).To(BeNil())
+		})
+
 	})
 })
