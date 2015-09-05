@@ -1,0 +1,14 @@
+buildpacks:
+- name: java
+  position: 1
+  enabled: false
+  locked: true
+  filename: ../fixtures/buildpacks/example-1.zip
+- name: ruby_buildpack
+  position: 2
+  filename: ../fixtures/buildpacks/example-2.zip
+- name: nodejs_buildpack
+  position: 3
+  enabled: true
+  locked: false
+  filename: ../fixtures/buildpacks/example-3.zip

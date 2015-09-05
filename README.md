@@ -50,15 +50,21 @@ values for each buildpack can be an absolute or relative path to a file.
 buildpacks:
 - name: java
  position: 1
- enabled: true
- locked: false
  filename: java-buildpack-offline-v3.0.zip
 - name: ruby_buildpack
  position: 2
- enabled: true
+ enabled: false
  locked: false
  filename: ruby_buildpack-cached-v1.3.0.zip
 ```
+
+Field      | Required | Default
+-----------|----------|--------
+`name`     | x        |
+`position` | x        |
+`filename` | x        |
+`enabled`  |          | `true`
+`locked`   |          | `false`
 
 # Algorithm
 

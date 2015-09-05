@@ -28,37 +28,54 @@ func (repo FilesystemBuildpackManifestRepo) ReadManifest(path string) ([]Buildpa
 	}
 	defer file.Close()
 
-	manifest, err := parseManifest(file)
-	err = validateFiles(manifest)
+	buildpacks, err := parseManifest(file)
+	err = validateFiles(buildpacks)
 	if err != nil {
 		return nil, err
 	}
 
-	return manifest.Buildpacks, err
+	return buildpacks, err
 }
 
-func parseManifest(file io.Reader) (manifest buildpackManifest, err error) {
+func parseManifest(file io.Reader) (buildpacks []Buildpack, err error) {
 	contents, err := ioutil.ReadAll(file)
 	if err != nil {
 		fmt.Println("error: ", err)
 		return
 	}
 
-	err = yaml.Unmarshal(contents, &manifest)
+	m := make(map[interface{}]interface{})
+
+	err = yaml.Unmarshal(contents, &m)
 	if err != nil {
 		fmt.Println("error: ", err)
+	}
+
+	for _, buildpack := range m["buildpacks"].([]interface{}) {
+		enabled := true
+		if buildpack.(map[interface{}]interface{})["enabled"] != nil {
+			enabled = buildpack.(map[interface{}]interface{})["enabled"].(bool)
+		}
+		locked := false
+		if buildpack.(map[interface{}]interface{})["locked"] != nil {
+			locked = buildpack.(map[interface{}]interface{})["locked"].(bool)
+		}
+
+		buildpacks = append(buildpacks, Buildpack{
+			Name: buildpack.(map[interface{}]interface{})["name"].(string),
+			Position: buildpack.(map[interface{}]interface{})["position"].(int),
+			Filename: buildpack.(map[interface{}]interface{})["filename"].(string),
+			Enabled: enabled,
+			Locked: locked,
+		})
 	}
 
 	return
 }
 
-type buildpackManifest struct {
-	Buildpacks []Buildpack
-}
-
-func validateFiles(manifest buildpackManifest) error {
+func validateFiles(buildpacks []Buildpack) error {
 	var invalid bool
-	for _, buildpack := range manifest.Buildpacks {
+	for _, buildpack := range buildpacks {
 		_, err := os.Stat(buildpack.Filename)
 		if err != nil {
 			invalid = true
