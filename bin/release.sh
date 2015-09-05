@@ -2,7 +2,7 @@
 
 export GH_ORG=${GH_ORG:-davidehringer}
 export GH_REPO=${GH_REPO:-cf-buildpack-management-plugin}
-export DESCRIPTION=${DESCRIPTION:-"Beta release"}
+export DESCRIPTION=${DESCRIPTION:-"GA release"}
 export PKG_DIR=${PKG_DIR:=out}
 
 VERSION=1.0.0
