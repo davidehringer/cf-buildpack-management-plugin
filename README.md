@@ -9,18 +9,18 @@ determines what buildpacks must be added, deleted, or updated.
 
 # Installation
 
-## Install from CLI
+### Install from CLI
 
 ```
 $ cf add-plugin-repo CF-Community http://plugins.cloudfoundry.org/
 $ cf install-plugin 'buildpack-management' -r CF-Community
 ```
-#### Install from binary
+### Install from binary
 
 - Download the appropriate plugin binary from [releases](https://github.com/davidehringer/cf-buildpack-management-plugin/releases)
 - Install the plugin: `$ cf install-plugin <binary>`
 
-## Install From Source
+### Install From Source
 
 [Go](http://golang.org/dl/) must be installed.
 
@@ -49,13 +49,13 @@ values for each buildpack can be an absolute or relative path to a file.
 ---
 buildpacks:
 - name: java
- position: 1
- filename: java-buildpack-offline-v3.0.zip
+  position: 1
+  filename: java-buildpack-offline-v3.0.zip
 - name: ruby_buildpack
- position: 2
- enabled: false
- locked: false
- filename: ruby_buildpack-cached-v1.3.0.zip
+  position: 2
+  enabled: false
+  locked: false
+  filename: ruby_buildpack-cached-v1.3.0.zip
 ```
 
 Field      | Required | Default
